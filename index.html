@@ -1,28 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Central de Turnos</title>
     <link rel="stylesheet" href="./style.css">
-    
+
 </head>
-<body>    
-        <header>
-            <h1>Central de Turnos</h1>
-        </header>
-        <main>
-            <input class="boton" type="button" value="Tengo turno">
-            <input class="boton" type="button" value="No tengo Turno">
+<body>
+    <header>
+        <h1>Central de Turnos</h1>
+    </header>
 
-        </main>
-        <footer>
 
-        </footer>
-    
-        
-    
-<script src="./index.js"></script>    
+    <main>
+        <p>Ingrese su DNI para verificar si tiene turno</p>
+        <form id="dniform" class="dniform">
+            <label for="dniinput">DNI:</label>
+            <input  type="text" id="dniinput" name="dniinput" required><br>
+            <input type="submit" value="Enviar">
+        </form>
+
+        <div id="formulario" class="formulario">
+            <form id="registroformulario" action="">
+                <h2>Porfavor ingrese sus datos para registrarse</h2>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required><br>
+                
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required><br>
+                
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" required><br>
+                
+                <input type="submit" value="Guardar">
+                
+            </form>
+        </div>
+
+        <p id="mensaje" class="mensaje"></p>
+
+    </main>
+
+
+
+
+    <footer></footer>
+<script src="./index.js"></script>  
 </body>
-
 </html>
