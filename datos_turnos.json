@@ -1,0 +1,6 @@
+[
+  { "nombre": "Pepe", "apellido": "Grillo", "dni": "12345" },
+  { "nombre": "Rodrigo", "apellido": "Rodriguez", "dni": "67890" },
+  { "nombre": "Martin", "apellido": "Martinez", "dni": "1346" },
+  { "nombre": "jimena", "apellido": "jimenez", "dni": "4679" }
+]

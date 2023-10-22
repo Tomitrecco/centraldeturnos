@@ -10,27 +10,42 @@ function Verificarturno(){
     
     var dniinput = document.getElementById("dniinput").value;
     var turnosRegistrados = JSON.parse(sessionStorage.getItem("turnosRegistrados")) || [];
-    var encontrado = false;
+    var encontrado_reg = false;
+    
 
     for (var i = 0; i < turnosRegistrados.length; i++) {
         if (turnosRegistrados[i].dni === dniinput) {
-            encontrado = true;
+            encontrado_reg = true;
             break;
         }
     }
 
-    var mensaje = document.getElementById("mensaje");
-    if (encontrado) {
-        mensaje.textContent = "Tiene un turno programado.";
-        document.getElementById("dniinput").value = "";
-    } else {
-        mensaje.textContent = "No tiene un turno programado.";
-        Mostrarformularioregistro();
-        document.getElementById("dniinput").value = "";
-    }
-});
-
-    
+    fetch("datos_turnos.json")
+        .then(response => response.json())
+        .then(data =>{
+            var encontrado = data.some(turno => turno.dni === dniinput);
+         
+        if (encontrado || encontrado_reg) {
+            Swal.fire(
+                'Usted ya tiene turno',
+                '',
+                'success'
+              )
+              
+            document.getElementById("dniinput").value = "";
+        } 
+        else {
+            Swal.fire(
+                'No tiene turno',
+                'por favor registrese para obtener su turno',
+                'error'
+              )
+            Mostrarformularioregistro();
+            document.getElementById("dniinput").value = "";
+        }
+        })
+    });
+   
 }
 
 
@@ -49,14 +64,17 @@ function Registroturno(){
         dni: dni
     };
 
+
     var turnosRegistrados = JSON.parse(sessionStorage.getItem("turnosRegistrados")) || [];
     turnosRegistrados.push(turno);
 
     sessionStorage.setItem("turnosRegistrados", JSON.stringify(turnosRegistrados));
 
-    var mensaje = document.getElementById("mensaje");
-    mensaje.textContent = "Registro exitoso. Tiene un turno programado.";
-
+    Swal.fire(
+        'Registro exitoso',
+        'Ya tiene turno programado',
+        'success'
+      )
     var formulario = document.getElementById("formulario");
     formulario.style.display = "none";
 
