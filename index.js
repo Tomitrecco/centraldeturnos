@@ -3,6 +3,33 @@ function Mostrarformularioregistro() {
     formulario.style.display = "block";
 }
 
+function Lista_turnos_registrados(){
+document.addEventListener('DOMContentLoaded', function() {
+    var lista2 = document.getElementById('lista2');
+    fetch('datos_turnos.json')
+        .then(response => response.json())
+        .then(data => {
+            
+            var ul2 = document.createElement('ul');
+            ul2.classList.add('datos-turno');
+
+            
+            data.forEach(turno => {            
+                var texto = ` ${turno.nombre} ${turno.apellido} ${turno.dni}`;
+               
+                var li = document.createElement('li');
+                li.textContent = texto;
+               
+                ul2.appendChild(li);
+            });
+
+            
+            lista2.appendChild(ul2);
+        })
+       
+});
+}
+
 function Verificarturno(){ 
     
     document.getElementById("dniform").addEventListener("submit", function(event) {
@@ -19,6 +46,8 @@ function Verificarturno(){
             break;
         }
     }
+    
+    
 
     fetch("datos_turnos.json")
         .then(response => response.json())
@@ -44,6 +73,7 @@ function Verificarturno(){
             document.getElementById("dniinput").value = "";
         }
         })
+
     });
    
 }
@@ -81,8 +111,15 @@ function Registroturno(){
     document.getElementById("nombre").value = "";
     document.getElementById("apellido").value = "";
     document.getElementById("dni").value = "";
+    var lista = document.getElementById("lista1");
+    var nuevoElemento = document.createElement("li");
+    nuevoElemento.textContent = ` ${turno.nombre} ${turno.apellido} ${turno.dni}`;
+    lista.appendChild(nuevoElemento);
+
 });
 }
 
+
 Verificarturno()
 Registroturno()
+Lista_turnos_registrados()

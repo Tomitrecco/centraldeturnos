@@ -82,6 +82,47 @@ h2{
 }
  
 
+.contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista-con-recuadro {
+    text-align: center;
+    margin: 10px;
+}
+
+.recuadro {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+    width: 500px;
+    height: 400px;
+    margin-right: 10px;
+}
+
+.lista {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.lista li {
+    margin-bottom: 8px;
+    list-style: none;
+    font-size: 20px;
+    margin: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+h2 {
+    color: #333;
+}
+
+
 
 
 
